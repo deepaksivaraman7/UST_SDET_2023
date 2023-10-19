@@ -30,11 +30,24 @@ int num1=Convert.ToInt32(Console.ReadLine());
 int num2=Convert.ToInt32(Console.ReadLine());
 double sum=calculation.Add(num1,num2);
 Console.WriteLine(sum);*/
+
+////18-10-2023
+//using Basic_Programs;
+
+//int consumernumber=Convert.ToInt32(Console.ReadLine());
+//Electricity electricity1 = new (consumernumber,5000,5500,"Old");
+//Console.WriteLine(electricity1.consumername + "-" + electricity1.consumernumber + "-" + electricity1.CalculateBill());
+
+//Electricity electricity2 = new(2345, 4400, 5200, "New");
+//Console.WriteLine(electricity2.consumername + "-" + electricity1.consumernumber + "-" + electricity2.CalculateBill());
+
+//19-10-2023
 using Basic_Programs;
 
-int consumernumber=Convert.ToInt32(Console.ReadLine());
-Electricity electricity1 = new (consumernumber,5000,5500,"Old");
-Console.WriteLine(electricity1.consumername + "-" + electricity1.consumernumber + "-" + electricity1.CalculateBill());
+//Employee employee = new(123, "Deepak", "IT", 10000);
+//Console.WriteLine("Employee ID: {0}\nName: {1}\nDepartment: {2}\nBasic Pay: {3}\nSalary: {4}", employee.Eid,employee.Ename,employee.Dept,employee.Basicpay,employee.CalculateSalary());
 
-Electricity electricity2 = new(2345, 4400, 5200, "New");
-Console.WriteLine(electricity2.consumername + "-" + electricity1.consumernumber + "-" + electricity2.CalculateBill());
+ArrayExample arrayExample = new ArrayExample();
+//arrayExample.OneDim();
+//arrayExample.TwoDim();
+arrayExample.JaggedArray();

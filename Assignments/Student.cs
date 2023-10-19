@@ -6,28 +6,31 @@ using System.Threading.Tasks;
 
 namespace Assignments
 {
-    class Student
+    internal class Student
     {
-        public string? name;
-        public int[]? grades = new int[3];
+        private string? studentName;
+        private double[] marks=new double[3];
+        private string? grade;
 
-        public Student(string? name, int[]? grades)
+        public Student(string? studentName, double[] marks, string? grade)
         {
-            this.name = name;
-            this.grades = grades;
+            this.studentName = studentName;
+            this.marks = marks;
+            this.grade = grade;
         }
+
+        public string? StudentName { get => studentName; set => studentName = value; }
+        public double[] Marks { get => marks; set => marks = value; }
+        public string? Grade { get => grade; set => grade = value; }
 
         public double CalculateAverage()
         {
-            if(grades == null)
-            {
-                return 0;
-            }
-            else
-            {
-                return grades.Average();
-            }
+            double average=Marks.Average();
+            return average;
+        }
+        public void GetMarksSummary()
+        {
+            Console.WriteLine(studentName+" has "+Marks.Length+" marks. "+"Highest Mark: "+Marks.Max()+", Lowest Mark: "+Marks.Min());
         }
     }
-    
 }
