@@ -14,6 +14,7 @@
 //Console.WriteLine(name+"'s average: " + student.CalculateAverage());
 
 //19-10-2023
+//1
 using Assignments;
 
 Product product1 = new("Mango", 20, 5);
@@ -28,6 +29,8 @@ foreach (Product product in products)
     Console.WriteLine("Quantity-"+product.Quantity);
     Console.WriteLine("Product value-" + product.ProductValue());
 }
+
+//2
 double[] marks1 = { 90, 80, 70 };
 double[] marks2 = { 10, 20, 30 };
 double[] marks3 = { 40, 50, 60 };
@@ -50,9 +53,5 @@ foreach (Student student in students)
     Console.WriteLine("Average-" + student.Marks.Average());
     Console.WriteLine("Grade-" + student.Grade);
 
-    foreach(Student stud in students)
-    {
-        stud.GetMarksSummary();
-
-    }
+    student.GetMarksSummary();
 }
