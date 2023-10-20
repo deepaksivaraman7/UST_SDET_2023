@@ -33,6 +33,12 @@ namespace Assignments
             return totalvalue;
 
         }
+        public void DisplayProducts()
+        {
+            Console.WriteLine("Product Name: "+ProductName);
+            Console.WriteLine("Price: "+Price);
+            Console.WriteLine("Quantity: "+Quantity);
+        }
     }
    
 }
