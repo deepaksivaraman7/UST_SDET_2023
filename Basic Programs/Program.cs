@@ -108,21 +108,32 @@ Console.WriteLine(sum);*/
 
 //}
 
-EV ev = new()
-{
-    VehNum = 123,
-    Brand = "ABC",
-    Model = "bv12",
-    Type = "4 wheeler"
-};
-ev.Disp();
-Console.WriteLine(ev.setTypeForVeh());
-PV pv = new()
-{
-    VehNum = 456,
-    Brand = "XYZ",
-    Model = "ab123",
-    Type = "2 wheeler"
-};
-Console.WriteLine(pv.setTypeForVeh());
-pv.Disp();
+//EV ev = new()
+//{
+//    VehNum = 123,
+//    Brand = "ABC",
+//    Model = "bv12",
+//    Type = "4 wheeler"
+//};
+//ev.Disp();
+//Console.WriteLine(ev.setTypeForVeh());
+//PV pv = new()
+//{
+//    VehNum = 456,
+//    Brand = "XYZ",
+//    Model = "ab123",
+//    Type = "2 wheeler"
+//};
+//Console.WriteLine(pv.setTypeForVeh());
+//pv.Disp();
+
+//21-10-2023
+
+Doctor doctor = new ();
+doctor.AddNewDoctor(1234,"ABC");
+doctor.DisplayDoctorDetails();
+doctor.ModifyDoctor(6789,"XYZ");
+doctor.DisplayDoctorDetails();
+
+doctor.BookApp(123, "new");
+doctor.DelApp("new");
