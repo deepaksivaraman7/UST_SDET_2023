@@ -1,7 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Case_Study;
-Console.WriteLine("Enter Y to continue");
-var choice=Console.ReadLine();
+Console.WriteLine("Enter customer id: ");
+var custid = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Enter customer name: ");
+
+var custname = Console.ReadLine();
+Console.WriteLine("Enter description: ");
+
+var desc = Console.ReadLine();
+var choice = "Y";
+var totalcost = 0;
+var totalbooks = 0;
+
 while (choice == "Y")
 {
     Console.WriteLine("1 for Fiction 2 for Non-fiction");
@@ -63,7 +73,6 @@ while (choice == "Y")
     Console.WriteLine("1.Search\n2.Order");
     var option = Convert.ToInt32(Console.ReadLine());
 
-
     switch (option)
     {
         case 1:
@@ -77,18 +86,14 @@ while (choice == "Y")
             Console.WriteLine("Enter book name to order: ");
             var bookname = Console.ReadLine();
             var orderingbook = allbooks.SearchBook(bookname);
-            Console.WriteLine("Enter customer id: ");
-            var custid = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter customer name: ");
-
-            var custname = Console.ReadLine();
-            Console.WriteLine("Enter description: ");
-
-            var desc = Console.ReadLine();
+            
             Book[] book = new Book[] { orderingbook };
             Order order = new(custid, custname, desc, book);
-            Console.WriteLine("Total Cost: " + order.CalculateTotalCost());
+            totalcost += order.CalculateTotalCost();
+            totalbooks += order.Books.Count();
+            Console.WriteLine("Total Cost: " + totalcost);
             order.DisplayDetails();
+            Console.WriteLine("Total number of books: " + totalbooks);
             break;
         default: break;
 

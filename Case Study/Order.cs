@@ -33,7 +33,7 @@ namespace Case_Study
         
         public void DisplayDetails()
         {
-            Console.WriteLine("Customer name: {0}\nNumber of books: {1}", CustName, Books.Count());
+            Console.WriteLine("Customer name: {0}\nQuantity: {1}\nCustomer ID: {2}", CustName, Books.Count(),CustId);
         }
         
     }
