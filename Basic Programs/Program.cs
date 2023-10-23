@@ -129,11 +129,52 @@ Console.WriteLine(sum);*/
 
 //21-10-2023
 
-Doctor doctor = new ();
-doctor.AddNewDoctor(1234,"ABC");
-doctor.DisplayDoctorDetails();
-doctor.ModifyDoctor(6789,"XYZ");
-doctor.DisplayDoctorDetails();
+//Doctor doctor = new ();
+//doctor.AddNewDoctor(1234,"ABC");
+//doctor.DisplayDoctorDetails();
+//doctor.ModifyDoctor(6789,"XYZ");
+//doctor.DisplayDoctorDetails();
 
-doctor.BookApp(123, "new");
-doctor.DelApp("new");
+//doctor.BookApp(123, "new");
+//doctor.DelApp("new");
+
+
+//23-10-2023
+//Polymorphism - overloading
+BankDetails details = new(123, 987654321L, "Deepak", "Active");
+BankDetails details1 = new();
+BankDetails details2 = new(456,123456789L,"New");
+BankDetailsNew newdetails= new(321, 567889997L, "BankDetailsNew", "Active");
+details.WelcomeMessage();
+newdetails.WelcomeMessage();//overriding
+Console.WriteLine("1.Customer ID  2.Account No  3.Name");
+int choice=Convert.ToInt32(Console.ReadLine());
+
+switch (choice) {
+    case 1:
+        Console.WriteLine("Customer ID: ");
+        //details.GetAccountDetails(Convert.ToInt32(Console.ReadLine()));
+        //details1.GetAccountDetails(Convert.ToInt32(Console.ReadLine()));
+        newdetails.GetAccountDetails(Convert.ToInt32(Console.ReadLine()));
+
+        break;
+    case 2:
+        Console.WriteLine("Account No: ");
+        //details.GetAccountDetails(Convert.ToInt64(Console.ReadLine()));
+        //details1.GetAccountDetails(Convert.ToInt64(Console.ReadLine()));
+        details2.GetAccountDetails(Convert.ToInt64(Console.ReadLine()));
+
+        break;
+    case 3:
+        Console.WriteLine("Name: ");
+        //details.GetAccountDetails(Console.ReadLine());
+        //details1.GetAccountDetails(Console.ReadLine());
+        details2.GetAccountDetails(Console.ReadLine());
+
+        break;
+    default: Console.WriteLine("Enter between 1-3");
+        break;
+}
+
+BankDetails.ExitMessage(); //static method
+newdetails.ExitMessage();

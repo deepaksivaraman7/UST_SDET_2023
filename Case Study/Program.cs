@@ -112,7 +112,6 @@ while (choice == "Y")
             totalbooks += order.Books.Count();
             Console.WriteLine("Total Cost: " + totalcost);
             order.DisplayDetails();
-            
             Console.WriteLine("Total number of books: " + totalbooks);
             break;
         default: break;

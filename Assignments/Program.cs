@@ -55,20 +55,38 @@ using Assignments;
 //    student.GetMarksSummary();
 //}
 
-//20-10-2023
+//20 - 10 - 2023
 
 //1
-ElectronicsProduct ep = new("Samsung", 22, 12, 2);
-ep.DisplayWarranty();
+//ElectronicsProduct ep = new("Samsung", 22, 12, 2);
+//ep.DisplayWarranty();
 
 //2
-DigitalProduct dp = new("Sony", 200, 2, 4, "MP3");
-dp.DisplayFormat();
+//DigitalProduct dp = new("Sony", 200, 2, 4, "MP3");
+//dp.DisplayFormat();
 
 //3
-ClothingProduct cp = new("Lee Cooper", 100, 22, "Medium");
-cp.DisplaySize();
-cp.DisplayProducts();
-dp.DisplayProducts();
-ep.DisplayProducts();
+//ClothingProduct cp = new("Lee Cooper", 100, 22, "Medium");
+//cp.DisplaySize();
+//cp.DisplayProducts();
+//dp.DisplayProducts();
+//ep.DisplayProducts();
 
+//23-10-2023
+
+//1
+Employee employee = new(123, "Deepak", "Sivaraman", 123);
+employee.DisplayInfo();
+
+//2
+Circle circle = new()
+{
+    Radius = 10,
+};
+Rectangle rectangle = new()
+{
+    Length = 20,
+    Width = 15
+};
+circle.Draw();
+rectangle.Draw();
