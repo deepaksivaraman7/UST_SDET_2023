@@ -86,25 +86,25 @@ Console.WriteLine(sum);*/
 //        Console.Write("StaffId: ");
 //        ts.StaffId = Convert.ToInt32(Console.ReadLine());
 //        Console.Write("Name: ");
-//        ts.StaffName = Console.ReadLine();
-//        Console.Write("Specializations: ");
-//        ts.Specializations = Console.ReadLine();
-//        Console.Write("Semester: ");
-//        ts.Sem = Convert.ToInt32(Console.ReadLine());
-//        ts.DisplayStaffDetails();
-//        break;
+//ts.StaffName = Console.ReadLine();
+//Console.Write("Specializations: ");
+//ts.Specializations = Console.ReadLine();
+//Console.Write("Semester: ");
+//ts.Sem = Convert.ToInt32(Console.ReadLine());
+//ts.DisplayStaffDetails();
+//break;
 //    case 2:
-//        NonTeachingStaff nts = new();
-//        Console.Write("StaffId: ");
-//        nts.StaffId = Convert.ToInt32(Console.ReadLine());
-//        Console.Write("Name: ");
-//        nts.StaffName = Console.ReadLine();
-//        Console.Write("Responsibilities: ");
-//        nts.Responsibilities = Console.ReadLine();
-//        Console.Write("Experience: ");
-//        nts.Experience = Convert.ToInt32(Console.ReadLine());
-//        nts.DisplayNTStaffDetails();
-//        break;
+//    NonTeachingStaff nts = new();
+//    Console.Write("StaffId: ");
+//    nts.StaffId = Convert.ToInt32(Console.ReadLine());
+//    Console.Write("Name: ");
+//    nts.StaffName = Console.ReadLine();
+//    Console.Write("Responsibilities: ");
+//    nts.Responsibilities = Console.ReadLine();
+//    Console.Write("Experience: ");
+//    nts.Experience = Convert.ToInt32(Console.ReadLine());
+//    nts.DisplayNTStaffDetails();
+//    break;
 
 //}
 
@@ -127,54 +127,72 @@ Console.WriteLine(sum);*/
 //Console.WriteLine(pv.setTypeForVeh());
 //pv.Disp();
 
-//21-10-2023
+//21 - 10 - 2023
 
-//Doctor doctor = new ();
-//doctor.AddNewDoctor(1234,"ABC");
+//Doctor doctor = new();
+//doctor.AddNewDoctor(1234, "ABC");
 //doctor.DisplayDoctorDetails();
-//doctor.ModifyDoctor(6789,"XYZ");
+//doctor.ModifyDoctor(6789, "XYZ");
 //doctor.DisplayDoctorDetails();
 
 //doctor.BookApp(123, "new");
 //doctor.DelApp("new");
 
 
-//23-10-2023
+//23 - 10 - 2023
 //Polymorphism - overloading
-BankDetails details = new(123, 987654321L, "Deepak", "Active");
-BankDetails details1 = new();
-BankDetails details2 = new(456,123456789L,"New");
-BankDetailsNew newdetails= new(321, 567889997L, "BankDetailsNew", "Active");
-details.WelcomeMessage();
-newdetails.WelcomeMessage();//overriding
-Console.WriteLine("1.Customer ID  2.Account No  3.Name");
-int choice=Convert.ToInt32(Console.ReadLine());
+//BankDetails details = new(123, 987654321L, "Deepak", "Active");
+//BankDetails details1 = new();
+//BankDetails details2 = new(456, 123456789L, "New");
+//BankDetailsNew newdetails = new(321, 567889997L, "BankDetailsNew", "Active");
+//details.WelcomeMessage();
+//newdetails.WelcomeMessage();//overriding
+//Console.WriteLine("1.Customer ID  2.Account No  3.Name");
+//int choice = Convert.ToInt32(Console.ReadLine());
 
-switch (choice) {
-    case 1:
-        Console.WriteLine("Customer ID: ");
-        //details.GetAccountDetails(Convert.ToInt32(Console.ReadLine()));
-        //details1.GetAccountDetails(Convert.ToInt32(Console.ReadLine()));
-        newdetails.GetAccountDetails(Convert.ToInt32(Console.ReadLine()));
+//switch (choice)
+//{
+//    case 1:
+//        Console.WriteLine("Customer ID: ");
+//        details.GetAccountDetails(Convert.ToInt32(Console.ReadLine()));
+//        details1.GetAccountDetails(Convert.ToInt32(Console.ReadLine()));
+//        newdetails.GetAccountDetails(Convert.ToInt32(Console.ReadLine()));
 
-        break;
-    case 2:
-        Console.WriteLine("Account No: ");
-        //details.GetAccountDetails(Convert.ToInt64(Console.ReadLine()));
-        //details1.GetAccountDetails(Convert.ToInt64(Console.ReadLine()));
-        details2.GetAccountDetails(Convert.ToInt64(Console.ReadLine()));
+//        break;
+//    case 2:
+//        Console.WriteLine("Account No: ");
+//        details.GetAccountDetails(Convert.ToInt64(Console.ReadLine()));
+//        details1.GetAccountDetails(Convert.ToInt64(Console.ReadLine()));
+//        details2.GetAccountDetails(Convert.ToInt64(Console.ReadLine()));
 
-        break;
-    case 3:
-        Console.WriteLine("Name: ");
-        //details.GetAccountDetails(Console.ReadLine());
-        //details1.GetAccountDetails(Console.ReadLine());
-        details2.GetAccountDetails(Console.ReadLine());
+//        break;
+//    case 3:
+//        Console.WriteLine("Name: ");
+//        details.GetAccountDetails(Console.ReadLine());
+//        details1.GetAccountDetails(Console.ReadLine());
+//        details2.GetAccountDetails(Console.ReadLine());
 
-        break;
-    default: Console.WriteLine("Enter between 1-3");
-        break;
-}
+//        break;
+//    default:
+//        Console.WriteLine("Enter between 1-3");
+//        break;
+//}
 
-BankDetails.ExitMessage(); //static method
-newdetails.ExitMessage();
+//BankDetails.ExitMessage(); //static method
+//newdetails.ExitMessage();
+
+//25-10-2023
+
+//NGC nGC = new();
+//nGC.ArrayListHandling();
+//nGC.StackHandling();
+//Console.WriteLine("Queue");
+//nGC.QueueHandling();
+//Console.WriteLine("HashTable");
+//nGC.HashTableHandling();
+//Console.WriteLine("SortedList");
+//nGC.SortedListHandling();
+
+Basic_Programs.GC gC = new();
+gC.ListHandling();
+gC.DictionaryHandling();

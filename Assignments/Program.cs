@@ -75,18 +75,42 @@ using Assignments;
 //23-10-2023
 
 //1
-Employee employee = new(123, "Deepak", "Sivaraman", 123);
-employee.DisplayInfo();
+//Employee employee = new(123, "Deepak", "Sivaraman", 123);
+//employee.DisplayInfo();
 
 //2
-Circle circle = new()
-{
-    Radius = 10,
-};
-Rectangle rectangle = new()
-{
-    Length = 20,
-    Width = 15
-};
-circle.Draw();
-rectangle.Draw();
+//Circle circle = new()
+//{
+//    Radius = 10,
+//};
+//Rectangle rectangle = new()
+//{
+//    Length = 20,
+//    Width = 15
+//};
+//circle.Draw();
+//rectangle.Draw();
+
+//25-10-2023
+
+//1
+
+InsurancePolicy policy = new(123, "New Policy", 200.5);
+Console.WriteLine("Before updating: "+policy.PremiumAmount);
+policy.RenewPolicy(300);
+Console.WriteLine("After updating: "+policy.PremiumAmount);
+policy.RenewPolicy();
+Console.WriteLine("After increasing 10%: "+policy.PremiumAmount);
+
+//2
+
+LifeInsurance lifeInsurance = new(123, "Life Insurance", 2000.00, 23);
+CarInsurance petrolCar = new(1234, "Petrol Insurance", 1000.00, "Petrol");
+CarInsurance dieselCar = new(3456, "Diesel Insurance", 1000.00, "Diesel");
+CarInsurance electricCar = new(7890, "Electric Insurance", 1000.00, "Electric");
+Console.WriteLine("Petrol car: "+petrolCar.CalculatePremium());
+Console.WriteLine("Diesel car: " + dieselCar.CalculatePremium());
+Console.WriteLine("Electric car: " + electricCar.CalculatePremium());
+Console.WriteLine("Life Insurance: " + lifeInsurance.CalculatePremium());
+
+
