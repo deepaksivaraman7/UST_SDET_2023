@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Basic_Programs;
+using Basic_Programs.ExceptionMessages;
 
 //int num1, num2, ans;
 //Console.WriteLine("Let us add two numbers");
@@ -193,6 +194,52 @@ Console.WriteLine(sum);*/
 //Console.WriteLine("SortedList");
 //nGC.SortedListHandling();
 
-Basic_Programs.GC gC = new();
-gC.ListHandling();
-gC.DictionaryHandling();
+//Basic_Programs.GC gC = new();
+//gC.ListHandling();
+//gC.DictionaryHandling();
+
+//26-10-2023
+
+ExceptionHandling handling = new(20, 104);
+//try
+//{
+//    handling.Divide();
+//}
+//catch (ArithmeticException ex)
+//{
+//    Console.WriteLine(MyExceptions.dmessagelist["Denominator"]);
+//    Console.WriteLine(MyExceptions.exmessagelist[0]);
+//    Console.WriteLine(ex.Message + " In " + ex.Source + ex.StackTrace);
+//}
+//catch (IndexOutOfRangeException ex)
+//{
+//    Console.WriteLine(MyExceptions.dmessagelist["Range"]);
+//    Console.WriteLine(MyExceptions.exmessagelist[1]);
+//    Console.WriteLine(ex.Message + " In " + ex.Source + ex.StackTrace);
+//}
+//catch (Exception ex)
+//{
+//    Console.WriteLine(MyExceptions.dmessagelist["Unknown"]);
+//    Console.WriteLine(MyExceptions.exmessagelist[2]);
+//    Console.WriteLine(ex.Message + " In " + ex.Source + ex.StackTrace);
+//}
+//finally
+//{
+//    Console.WriteLine("Done");
+//}
+try
+{
+    handling.NumCheck1();
+}
+catch (Number1Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+try
+{
+    handling.NumCheck2();
+}
+catch (Number2Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
