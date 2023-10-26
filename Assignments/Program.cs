@@ -117,104 +117,43 @@ using Assignments;
 
 //1
 
-//Customer customer1 = new(123, "Customer 1", 987654321L, 220.66);
-//Customer customer2 = new(456, "Customer 2", 678904567L, 638.47);
-//Customer customer3 = new(789, "Customer 3", 537495989L, 837.37);
+Customer customer1 = new(123, "Customer 1", 987654321L, 220.66);
+Customer customer2 = new(456, "Customer 2", 678904567L, 638.47);
+Customer customer3 = new(789, "Customer 3", 537495989L, 837.37);
 
-//List<Customer> customerlist = new()
-//{
-//    customer1,
-//    customer2,
-//    customer3
-//};
-//void SearchCustomer(long phonenumber)
-//{
-//    Customer? customer = null;
-//    foreach (Customer? cust in customerlist)
-//    {
-//        if (cust.Phone == phonenumber)
-//        {
-//            customer = cust;
-//            break;
-//        }
-//    }
-//    if (customer != null)
-//    {
-//        Console.WriteLine("Customer ID: {0}\nCustomer Name: {1}\nBalance: {2}", customer.CustomerId, customer.Name, customer.AccountBalance);
-//    }
-//    else
-//    {
-//        Console.WriteLine("Customer not found");
+Customer.customerlist.Add(customer1);
+Customer.customerlist.Add(customer2);
+Customer.customerlist.Add(customer3);
 
-//    }
-//}
-//void DisplayAll()
-//{
-//    foreach(Customer customer in customerlist)
-//    {
-//        Console.Write("ID: {0}    Name: {1}    Phone: {2}    Balance: {3}",customer.CustomerId, customer.Name,customer.Phone,customer.AccountBalance);
-//        Console.WriteLine();
-//    }
-//}
-//SearchCustomer(987654321);
-//SearchCustomer(123456789);
-//DisplayAll();
+Customer.SearchCustomer(987654321);
+Customer.SearchCustomer(123456789);
+Customer.DisplayAll();
 
 //2
 
-CallRecord record1= new CallRecord(123,987654321L,TimeOnly.MaxValue);
-CallRecord record2 = new CallRecord(456, 123456789L, TimeOnly.MinValue);
-CallRecord record3 = new CallRecord(789, 654738927L, TimeOnly.MinValue);
-CallRecord record4 = new CallRecord(987, 654738927L, TimeOnly.MaxValue);
+CallRecord record1 = new(123, 987654321L, TimeOnly.MaxValue);
+CallRecord record2 = new(456, 123456789L, TimeOnly.MinValue);
+CallRecord record3 = new(789, 654738927L, TimeOnly.MinValue);
+CallRecord record4 = new(987, 654738927L, TimeOnly.MaxValue);
 
 
-List<CallRecord> calls = new()
-{
-    record1,
-    record2,
-    record3,
-    record4
-};
-void CallHistory(long phone)
-{
-    foreach (var call in calls)
-    {
-        if (call.PhoneNumber == phone)
-        {
-            Console.WriteLine("Call ID: {0}   Call Time: {1}", call.CallId, call.CallTime);
-        }
-    }
-}
-CallHistory(654738927);
-void TotalCalls()
-{
-    Dictionary<long, int> dict = new();
-    int count = 1;
-    foreach (var call in calls)
-    {
-        if (!dict.ContainsKey(call.PhoneNumber))
-        {
-            dict[call.PhoneNumber] = count;
-        }
-        else
-        {
-            dict[call.PhoneNumber] += 1;
-        }
-    }
-    foreach (var number in dict) {
-        Console.WriteLine("Phone Number: {0}   Number of calls: {1}",number.Key,number.Value);
-    }
-}
-TotalCalls();
+CallRecord.calls.Add(record1);
+CallRecord.calls.Add(record2);
+CallRecord.calls.Add(record3);
+CallRecord.calls.Add(record4);
+
+CallRecord.CallHistory(654738927);
+
+CallRecord.TotalCalls();
 
 //3
 
 Patient patient = new(123, "", 32, "Fever");
 try
 {
-    patient.AddPatient(patient);
+    Patient.AddPatient(patient);
 }
-catch(ArgumentException ex)
+catch (ArgumentException ex)
 {
     Console.WriteLine(ex.Message);
 }

@@ -20,8 +20,8 @@ namespace Assignments
         public string Name { get; set; }
         public int Age { get; set; }
         public string Diagnosis { get; set; }
-        List<Patient> patients = new();
-        public void AddPatient(Patient patient)
+        public static List<Patient> patients = new();
+        public static void AddPatient(Patient patient)
         {
 
             if (patient.Age < 0 || patient.Age > 120)
