@@ -63,6 +63,20 @@ namespace Assignments
                 Console.WriteLine("Created file");
             }
         }
+        public static void ViewPatientData()
+        {
+            FileStream fs = new("D:\\Training Handson\\Basic Solution\\Assignments\\Files\\Patient.txt",FileMode.Open,FileAccess.Read);
+            StreamReader sr = new(fs);
+            sr.BaseStream.Seek(0, SeekOrigin.Begin);
+            string? str = sr.ReadLine();
+            while (str != null)
+            {
+                Console.WriteLine(str);
+                str = sr.ReadLine();
+            }
+            sr.Close();
+            fs.Close();
+        }
     }
     
 }

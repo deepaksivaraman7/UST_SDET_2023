@@ -207,6 +207,10 @@ switch (choice)
         Patient patient = new(id, name, age, diagnosis);
         Patient.AddPatientRecord(patient);
         break;
-    default:break;
+    case 2:
+        Patient.ViewPatientData();
+        break;
+    default:
+        break;
 
 }
