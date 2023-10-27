@@ -162,12 +162,12 @@ using Assignments.Exceptions;
 //27-10-2023
 
 //1
-//MedicalRecord mr1 = new(13, "",23, "Fever", 34,555);
+//MedicalRecord mr1 = new(13, "", 23, "Fever", 34, 555);
 //try
 //{
 //    MedicalRecord.AddMedicalRecord(mr1);
 //}
-//catch(InvalidPatientDataException ex)
+//catch (InvalidPatientDataException ex)
 //{
 //    Console.WriteLine(ex.Message);
 //}
@@ -190,27 +190,80 @@ using Assignments.Exceptions;
 //    Console.WriteLine(ex.Message);
 //}
 
-//2
-Console.WriteLine("1.Add Patient    2.View Patients    3.Exit");
-int choice = Convert.ToInt32(Console.ReadLine());
-switch (choice)
-{
-    case 1:
-        Console.Write("Enter patient ID: ");
-        int id = Convert.ToInt32(Console.ReadLine());
-        Console.Write("Enter patient name: ");
-        string? name = Console.ReadLine();
-        Console.Write("Enter patient age: ");
-        int age = Convert.ToInt32(Console.ReadLine());
-        Console.Write("Diagnosis: ");
-        string? diagnosis = Console.ReadLine();
-        Patient patient = new(id, name, age, diagnosis);
-        Patient.AddPatientRecord(patient);
-        break;
-    case 2:
-        Patient.ViewPatientData();
-        break;
-    default:
-        break;
+////2
 
+//string? flag = "Y";
+//while (flag == "Y")
+//{
+//    Console.WriteLine("Select:   1.Add Patient    2.View Patients");
+//    int choice = Convert.ToInt32(Console.ReadLine());
+//    switch (choice)
+//    {
+//        case 1:
+//            Console.Write("Enter patient ID: ");
+//            int id = Convert.ToInt32(Console.ReadLine());
+//            Console.Write("Enter patient name: ");
+//            string? name = Console.ReadLine();
+//            Console.Write("Enter patient age: ");
+//            int age = Convert.ToInt32(Console.ReadLine());
+//            Console.Write("Diagnosis: ");
+//            string? diagnosis = Console.ReadLine();
+//            Patient patient = new(id, name, age, diagnosis);
+//            Patient.AddPatientRecord(patient);
+//            break;
+//        case 2:
+//            Patient.ViewPatientData();
+//            break;
+//        default:
+//            break;
+//    }
+//    Console.WriteLine("Press Y to continue, any other key to exit");
+//    flag = Console.ReadLine();
+//    if (flag != null)
+//    {
+//        flag = flag.ToUpper();
+//    }
+//}
+
+//3
+
+string? flag = "Y";
+while (flag == "Y")
+{
+    Console.WriteLine("Select:   1.Add Medical History    2.View Medical History");
+    int choice = Convert.ToInt32(Console.ReadLine());
+    switch (choice)
+    {
+        case 1:
+            Console.Write("Enter Record ID: ");
+            int rid = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter Patient ID: ");
+            int pid = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter description: ");
+            string? desc = Console.ReadLine();
+            Console.Write("Date: ");
+            string? stringdate= Console.ReadLine();
+            DateOnly date = DateOnly.MinValue;
+            if (stringdate != null)
+            {
+               date = DateOnly.Parse(stringdate);
+            }
+            MedicalHistory medicalHistory = new(rid,pid,desc,date);
+            MedicalHistory.AddMedicalHistoryToList(medicalHistory);
+            MedicalHistory.AddMedicalHistory(medicalHistory);
+            break;
+        case 2:
+            Console.Write("Enter Patient ID: ");
+            int patientId= Convert.ToInt32(Console.ReadLine());
+            MedicalHistory.ViewMedicalHistory(patientId);
+            break;
+        default:
+            break;
+    }
+    Console.WriteLine("Press Y to continue, any other key to exit");
+    flag = Console.ReadLine();
+    if (flag != null)
+    {
+        flag = flag.ToUpper();
+    }
 }

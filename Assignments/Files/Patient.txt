@@ -1,2 +1,5 @@
 Patient ID: 123  Patient Name: Deepak  Patient Age: 12  Patient Diagnosis: Fever 
 Patient ID: 12  Patient Name: New  Patient Age: 12  Patient Diagnosis: fever 
+Patient ID: 345  Patient Name: ABC  Patient Age: 34  Patient Diagnosis: Fever 
+Patient ID: 123  Patient Name: Old  Patient Age: 34  Patient Diagnosis: fever 
+Patient ID: 456  Patient Name: new  Patient Age: 33  Patient Diagnosis: fever 

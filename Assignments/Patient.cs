@@ -35,13 +35,13 @@ namespace Assignments
             else
             {
                 patients.Add(patient);
-                Console.WriteLine("Added");
+                Console.WriteLine("Added patient to list");
             }
 
         }
         public static void CreatePatientFile()
         {
-            FileStream fs = new("D:\\Training Handson\\Basic Solution\\Assignments\\Files\\Patient.txt", FileMode.Create, FileAccess.Write);
+            _ = new FileStream("D:\\Training Handson\\Basic Solution\\Assignments\\Files\\Patient.txt", FileMode.Create, FileAccess.Write);
 
         }
         public static void AddPatientRecord(Patient patient)
@@ -60,22 +60,30 @@ namespace Assignments
                 str.Write("Patient Age: " + patient.Age + "  ");
                 str.Write("Patient Diagnosis: " + patient.Diagnosis);
                 str.WriteLine(" ");
-                Console.WriteLine("Created file");
+                Console.WriteLine("Created patient record");
             }
         }
         public static void ViewPatientData()
         {
-            FileStream fs = new("D:\\Training Handson\\Basic Solution\\Assignments\\Files\\Patient.txt",FileMode.Open,FileAccess.Read);
-            StreamReader sr = new(fs);
-            sr.BaseStream.Seek(0, SeekOrigin.Begin);
-            string? str = sr.ReadLine();
-            while (str != null)
+            FileInfo fi = new("D:\\Training Handson\\Basic Solution\\Assignments\\Files\\Patient.txt");
+            if (fi.Exists)
             {
-                Console.WriteLine(str);
-                str = sr.ReadLine();
+                FileStream fs = new("D:\\Training Handson\\Basic Solution\\Assignments\\Files\\Patient.txt", FileMode.Open, FileAccess.Read);
+                StreamReader sr = new(fs);
+                sr.BaseStream.Seek(0, SeekOrigin.Begin);
+                string? str = sr.ReadLine();
+                while (str != null)
+                {
+                    Console.WriteLine(str);
+                    str = sr.ReadLine();
+                }
+                sr.Close();
+                fs.Close();
             }
-            sr.Close();
-            fs.Close();
+            else
+            {
+                Console.WriteLine("No file found, create one file to view");
+            }
         }
     }
     
