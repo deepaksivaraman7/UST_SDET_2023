@@ -1,5 +1,6 @@
 ﻿//18-10-2023
 using Assignments;
+using Assignments.Exceptions;
 
 //int[]grades = new int[3];
 //Console.WriteLine("Enter Name: ");
@@ -117,44 +118,95 @@ using Assignments;
 
 //1
 
-Customer customer1 = new(123, "Customer 1", 987654321L, 220.66);
-Customer customer2 = new(456, "Customer 2", 678904567L, 638.47);
-Customer customer3 = new(789, "Customer 3", 537495989L, 837.37);
+//Customer customer1 = new(123, "Customer 1", 987654321L, 220.66);
+//Customer customer2 = new(456, "Customer 2", 678904567L, 638.47);
+//Customer customer3 = new(789, "Customer 3", 537495989L, 837.37);
 
-Customer.customerlist.Add(customer1);
-Customer.customerlist.Add(customer2);
-Customer.customerlist.Add(customer3);
+//Customer.customerlist.Add(customer1);
+//Customer.customerlist.Add(customer2);
+//Customer.customerlist.Add(customer3);
 
-Customer.SearchCustomer(987654321);
-Customer.SearchCustomer(123456789);
-Customer.DisplayAll();
+//Customer.SearchCustomer(987654321);
+//Customer.SearchCustomer(123456789);
+//Customer.DisplayAll();
 
 //2
 
-CallRecord record1 = new(123, 987654321L, TimeOnly.MaxValue);
-CallRecord record2 = new(456, 123456789L, TimeOnly.MinValue);
-CallRecord record3 = new(789, 654738927L, TimeOnly.MinValue);
-CallRecord record4 = new(987, 654738927L, TimeOnly.MaxValue);
+//CallRecord record1 = new(123, 987654321L, TimeOnly.MaxValue);
+//CallRecord record2 = new(456, 123456789L, TimeOnly.MinValue);
+//CallRecord record3 = new(789, 654738927L, TimeOnly.MinValue);
+//CallRecord record4 = new(987, 654738927L, TimeOnly.MaxValue);
 
 
-CallRecord.calls.Add(record1);
-CallRecord.calls.Add(record2);
-CallRecord.calls.Add(record3);
-CallRecord.calls.Add(record4);
+//CallRecord.calls.Add(record1);
+//CallRecord.calls.Add(record2);
+//CallRecord.calls.Add(record3);
+//CallRecord.calls.Add(record4);
 
-CallRecord.CallHistory(654738927);
+//CallRecord.CallHistory(654738927);
 
-CallRecord.TotalCalls();
+//CallRecord.TotalCalls();
 
 //3
 
-Patient patient = new(123, "", 32, "Fever");
-try
-{
-    Patient.AddPatient(patient);
-}
-catch (ArgumentException ex)
-{
-    Console.WriteLine(ex.Message);
-}
+//Patient patient = new(123, "", 32, "Fever");
+//try
+//{
+//    Patient.AddPatient(patient);
+//}
+//catch (ArgumentException ex)
+//{
+//    Console.WriteLine(ex.Message);
+//}
 
+//27-10-2023
+
+//1
+//MedicalRecord mr1 = new(13, "",23, "Fever", 34,555);
+//try
+//{
+//    MedicalRecord.AddMedicalRecord(mr1);
+//}
+//catch(InvalidPatientDataException ex)
+//{
+//    Console.WriteLine(ex.Message);
+//}
+//MedicalRecord mr2 = new(14, "ABC", 34, "Headache", 56, -777);
+//try
+//{
+//    MedicalRecord.AddMedicalRecord(mr2);
+//}
+//catch (InvalidMedicalRecordException ex)
+//{
+//    Console.WriteLine(ex.Message);
+//}
+//MedicalRecord mr3 = new(14, "ABC", 34, "Headache", 56, 777);
+//try
+//{
+//    MedicalRecord.AddMedicalRecord(mr3);
+//}
+//catch (InvalidMedicalRecordException ex)
+//{
+//    Console.WriteLine(ex.Message);
+//}
+
+//2
+Console.WriteLine("1.Add Patient    2.View Patients    3.Exit");
+int choice = Convert.ToInt32(Console.ReadLine());
+switch (choice)
+{
+    case 1:
+        Console.Write("Enter patient ID: ");
+        int id = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter patient name: ");
+        string? name = Console.ReadLine();
+        Console.Write("Enter patient age: ");
+        int age = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Diagnosis: ");
+        string? diagnosis = Console.ReadLine();
+        Patient patient = new(id, name, age, diagnosis);
+        Patient.AddPatientRecord(patient);
+        break;
+    default:break;
+
+}

@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Basic_Programs;
-using Basic_Programs.ExceptionMessages;
+//using Basic_Programs.ExceptionMessages;
 
 //int num1, num2, ans;
 //Console.WriteLine("Let us add two numbers");
@@ -200,7 +200,7 @@ Console.WriteLine(sum);*/
 
 //26-10-2023
 
-ExceptionHandling handling = new(20, 104);
+//ExceptionHandling handling = new(20, 104);
 //try
 //{
 //    handling.Divide();
@@ -227,19 +227,28 @@ ExceptionHandling handling = new(20, 104);
 //{
 //    Console.WriteLine("Done");
 //}
-try
-{
-    handling.NumCheck1();
-}
-catch (Number1Exception ex)
-{
-    Console.WriteLine(ex.Message);
-}
-try
-{
-    handling.NumCheck2();
-}
-catch (Number2Exception ex)
-{
-    Console.WriteLine(ex.Message);
-}
+//try
+//{
+//    handling.NumCheck1();
+//}
+//catch (Number1Exception ex)
+//{
+//    Console.WriteLine(ex.Message);
+//}
+//try
+//{
+//    handling.NumCheck2();
+//}
+//catch (Number2Exception ex)
+//{
+//    Console.WriteLine(ex.Message);
+//}
+
+//27-10-2023
+
+//FileOperations.CreateFile();
+//FileOperations.WriteData();
+//FileOperations.ReadData();
+//FileOperations.CopyMoveFile();
+//FileOperations.DeleteFile();
+//FileOperations.FileProperties();
