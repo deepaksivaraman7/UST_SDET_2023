@@ -19,10 +19,10 @@ namespace Case_Study
                 throw new OrderException("Product out of stock");
             }
             double totalamount = product.Price * quantity;
-            int orderid=1;
+            int orderid = 1;
             if (Orders != null)
             {
-                 orderid = Orders.Count + 1;
+                orderid = Orders.Count + 1;
             }
             Order order = new(orderid, customer, product, quantity, totalamount, false, false);
             Orders?.Add(order);
@@ -68,7 +68,7 @@ namespace Case_Study
                 }
             }
         }
-        public void DeliverProduct(Customer customer, Product product)
+        public static void DeliverProduct(Customer customer, Product product)
         {
             Order? order = null;
             if (Orders != null)
@@ -86,14 +86,16 @@ namespace Case_Study
             {
                 order.IsDelivered = true;
 
-                if (product is PhysicalProduct physicalProduct)
+                if (product.GetType() == typeof(PhysicalProduct))
                 {
+                    PhysicalProduct physicalProduct = (PhysicalProduct)product;
                     double shippingcosts = physicalProduct.Weight * 0.1;
                     Console.WriteLine("Product delivered. Shipping cost: {0}", shippingcosts);
                 }
-                else if (product is DigitalProduct digitalProduct)
+                else if (product.GetType() == typeof(DigitalProduct))
                 {
-                    Console.WriteLine("Digital product delivered. Download link: {0}",digitalProduct.DownloadLink);
+                    DigitalProduct digitalProduct = (DigitalProduct)product;
+                    Console.WriteLine("Digital product delivered. Download link: {0}", digitalProduct.DownloadLink);
                 }
             }
             else
@@ -101,5 +103,30 @@ namespace Case_Study
                 throw new OrderException("Error, Order not found or not paid");
             }
         }
+        public static void CreateReport()
+        {
+            _ = new FileStream("D:\\Training Handson\\Basic Solution\\Case Study\\Files\\Order_Report.txt", FileMode.Create, FileAccess.Write);
+
+        }
+        public static void DownloadReport(Order order)
+        {
+
+            FileInfo fi = new("D:\\Training Handson\\Basic Solution\\Case Study\\Files\\Order_Report.txt");
+            if (!fi.Exists)
+            {
+                CreateReport();
+            }
+            else
+            {
+                using StreamWriter str = fi.AppendText();
+                str.Write("Customer: " + order.Customer.CustomerName + "  ");
+                str.Write("Order ID: " + order.OrderId + "  ");
+                str.Write("Product: " + order.Product.Name + "  ");
+                str.Write("Paid: " + order.IsPaid + "  ");
+                str.Write("Price: " + order.Product.Price);
+                str.WriteLine(" ");
+            }
+        }
+
     }
 }

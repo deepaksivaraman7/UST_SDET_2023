@@ -1,0 +1,5 @@
+
+Customer: Case_Study.Customer  Order ID: 1  Product: Amazon  Paid: False  Price: 300 
+Customer: Case_Study.Customer  Order ID: 2  Product: Apple  Paid: False  Price: 100 
+Customer: Case_Study.Customer  Order ID: 1  Product: Amazon  Paid: False  Price: 300 
+Customer: NewCustomer  Order ID: 1  Product: Amazon  Paid: False  Price: 300 

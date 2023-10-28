@@ -132,7 +132,7 @@ using Case_Study.Exceptions;
 //28-10-2023
 
 OrderFulfillment orderFulfillment = new();
-PhysicalProduct product1 = new(1, "Apple", 100, 2,7.3,"2*3*5");
+PhysicalProduct product1 = new(1, "Apple", 100, 2, 7.3, "2*3*5");
 PhysicalProduct product2 = new(2, "Motorola", 47, 3, 3.3, "2*4*5");
 PhysicalProduct product3 = new(3, "Samsung", 80, 4, 4.23, "3*3*5");
 DigitalProduct product4 = new(4, "Amazon", 300, 22, "amazon.com", ".jpg");
@@ -168,10 +168,43 @@ while (flag?.ToUpper() == "Y")
                     {
                         foreach (Order order in OrderFulfillment.Orders)
                         {
-                            Console.WriteLine("Order id: {0}     Product: {1}     Quantity: {2}     Customer: {3}", order.OrderId, order.Product.Name, order.Quantity, order.Customer.CustomerName);
+                            Console.WriteLine("Order id: {0}     Product: {1}     Quantity: {2}     Customer: {3}     Paid: {4}     Delivered: {5}", order.OrderId, order.Product.Name, order.Quantity, order.Customer.CustomerName, order.IsPaid, order.IsDelivered);
                         }
                     }
-
+                    Console.WriteLine("1.Deliver order     2.Download report");
+                    int vieworderchoice = Convert.ToInt32(Console.ReadLine());
+                    switch (vieworderchoice)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter order ID to deliver");
+                            int orderid = Convert.ToInt32(Console.ReadLine());
+                            if (OrderFulfillment.Orders != null)
+                            {
+                                foreach (Order order in OrderFulfillment.Orders)
+                                {
+                                    if (order.OrderId == orderid)
+                                    {
+                                        try
+                                        {
+                                            OrderFulfillment.DeliverProduct(customer, order.Product);
+                                        }
+                                        catch (OrderException ex)
+                                        {
+                                            Console.WriteLine(ex.Message);
+                                        }
+                                    }
+                                }
+                            }
+                            break;
+                        case 2:
+                            if (OrderFulfillment.Orders != null)
+                            {
+                                foreach (Order order in OrderFulfillment.Orders)
+                                    OrderFulfillment.DownloadReport(order);
+                            }
+                            Console.WriteLine("Downloaded report");
+                            break;
+                    }
                     break;
                 default: break;
 
@@ -207,22 +240,22 @@ while (flag?.ToUpper() == "Y")
                                 }
                             }
 
-                            
+
 
                             if (orderedproduct != null)
                             {
                                 OrderFulfillment.Products?.Add(orderedproduct);
                                 Console.Write("Enter quantity: ");
-                                int quantity= Convert.ToInt32(Console.ReadLine());
+                                int quantity = Convert.ToInt32(Console.ReadLine());
                                 try
                                 {
                                     orderFulfillment.PlaceOrder(customer, orderedproduct, quantity);
                                 }
-                                catch(OrderException ex)
+                                catch (OrderException ex)
                                 {
                                     Console.WriteLine(ex.Message);
                                 }
-                               
+
                             }
 
                             break;
@@ -245,7 +278,7 @@ while (flag?.ToUpper() == "Y")
                                     porderedproduct = pproduct;
                                 }
                             }
-                           
+
 
                             if (porderedproduct != null)
                             {
@@ -254,7 +287,7 @@ while (flag?.ToUpper() == "Y")
                                 int quantity = Convert.ToInt32(Console.ReadLine());
                                 try
                                 {
-                                   orderFulfillment.PlaceOrder(customer, porderedproduct, quantity);
+                                    orderFulfillment.PlaceOrder(customer, porderedproduct, quantity);
                                 }
                                 catch (OrderException ex)
                                 {
@@ -271,7 +304,7 @@ while (flag?.ToUpper() == "Y")
                             {
                                 OrderFulfillment.ProcessPayment(customer, amount);
                             }
-                            catch(OrderException ex)
+                            catch (OrderException ex)
                             {
                                 Console.WriteLine(ex.Message);
                             }
@@ -286,7 +319,15 @@ while (flag?.ToUpper() == "Y")
                         {
                             if (order.Customer.CustomerName == customer.CustomerName)
                             {
-                                Console.WriteLine("Order ID: {0}     Product Name: {1}     Paid: {2}", order.OrderId, order.Product.Name, order.IsPaid);
+                                if (order.Product.GetType() == typeof(DigitalProduct) && order.IsPaid)
+                                {
+                                    DigitalProduct digitalProduct = (DigitalProduct)order.Product;
+                                    Console.WriteLine("Order ID: {0}     Product Name: {1}     Paid: {2}     Download link: {3}", order.OrderId, order.Product.Name, order.IsPaid, digitalProduct.DownloadLink);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Order ID: {0}     Product Name: {1}     Paid: {2}", order.OrderId, order.Product.Name, order.IsPaid);
+                                }
                             }
                         }
                     }

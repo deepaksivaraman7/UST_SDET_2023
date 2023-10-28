@@ -1,4 +1,0 @@
-Record ID: 321  Patient ID: 123  Description: deded  Date: 23-10-2023 
-Record ID: 456  Patient ID: 22  Description: ddsss  Date: 23-10-2023 
-Record ID: 1234  Patient ID: 4321  Description: Fever  Date: 23-10-2023 
-Record ID: 567  Patient ID: 123  Description: fever  Date: 24-10-2023 
