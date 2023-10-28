@@ -1,5 +1,6 @@
 ﻿//See https://aka.ms/new-console-template for more information
 using Case_Study;
+using Case_Study.Exceptions;
 
 //28-10-2023
 
@@ -136,7 +137,6 @@ PhysicalProduct product2 = new(2, "Motorola", 47, 3, 3.3, "2*4*5");
 PhysicalProduct product3 = new(3, "Samsung", 80, 4, 4.23, "3*3*5");
 DigitalProduct product4 = new(4, "Amazon", 300, 22, "amazon.com", ".jpg");
 Customer customer = new(123, "NewCustomer", "customer@gmail.com");
-int orderid = 0;
 List<Product> products = new()
 {
     product1, product2, product3,product4
@@ -145,106 +145,159 @@ List<Customer> customers = new()
 {
     customer
 };
-Console.WriteLine("1.Admin        2.Customer");
-int choice=Convert.ToInt32(Console.ReadLine());
-switch (choice)
+string? flag = "Y";
+while (flag?.ToUpper() == "Y")
 {
-    case 1:
-        Console.WriteLine("1.View Products        2.View Orders");
-        int adminchoice=Convert.ToInt32(Console.ReadLine());
-        switch (adminchoice)
-        {
-            case 1:
-                foreach(Product product in products)
-                {
-                    Console.WriteLine("Product ID: {0}   Product Name: {1}   Price: {2}   In stock: {3}", product.ProductId, product.Name, product.Price, product.StockQuantity);
-                }
-                break;
-            default:break;
-
-        }
-        break;
-    case 2:
-        orderFulfillment.Customers=customers;
-        Console.WriteLine("1.Place order   2.View orders");
-        int customerchoice=Convert.ToInt32(Console.ReadLine());
-        switch (customerchoice)
-        {
-            case 1:
-                Console.WriteLine("1.Digital products   2.Physical products");
-                int productchoice = Convert.ToInt32(Console.ReadLine());
-                switch (productchoice)
-                {
-                    case 1:
-                        foreach (Product dproduct in products)
+    Console.WriteLine("1.Admin        2.Customer");
+    int choice = Convert.ToInt32(Console.ReadLine());
+    switch (choice)
+    {
+        case 1:
+            Console.WriteLine("1.View Products        2.View Orders");
+            int adminchoice = Convert.ToInt32(Console.ReadLine());
+            switch (adminchoice)
+            {
+                case 1:
+                    foreach (Product product in products)
+                    {
+                        Console.WriteLine("Product ID: {0}     Product Name: {1}     Price: {2}     In stock: {3}", product.ProductId, product.Name, product.Price, product.StockQuantity);
+                    }
+                    break;
+                case 2:
+                    if (OrderFulfillment.Orders != null)
+                    {
+                        foreach (Order order in OrderFulfillment.Orders)
                         {
-                            if (dproduct.GetType() == typeof(DigitalProduct))
+                            Console.WriteLine("Order id: {0}     Product: {1}     Quantity: {2}     Customer: {3}", order.OrderId, order.Product.Name, order.Quantity, order.Customer.CustomerName);
+                        }
+                    }
+
+                    break;
+                default: break;
+
+            }
+            break;
+        case 2:
+            OrderFulfillment.Customers = customers;
+            Console.WriteLine("1.Place order        2.View orders");
+            int customerchoice = Convert.ToInt32(Console.ReadLine());
+            switch (customerchoice)
+            {
+                case 1:
+                    Console.WriteLine("1.Digital products     2.Physical products     3.Payment");
+                    int productchoice = Convert.ToInt32(Console.ReadLine());
+                    switch (productchoice)
+                    {
+                        case 1:
+                            foreach (Product dproduct in products)
                             {
-                                Console.WriteLine("Product ID: {0}   Product Name: {1}   Price: {2}   In stock: {3}", dproduct.ProductId, dproduct.Name, dproduct.Price, dproduct.StockQuantity);
+                                if (dproduct.GetType() == typeof(DigitalProduct))
+                                {
+                                    Console.WriteLine("Product ID: {0}     Product Name: {1}     Price: {2}     In stock: {3}", dproduct.ProductId, dproduct.Name, dproduct.Price, dproduct.StockQuantity);
+                                }
                             }
-                        }
-                        Console.Write("Enter product id: ");
-                        int productid=Convert.ToInt32(Console.ReadLine());
-                        Product? orderedproduct = null;
-                        foreach (Product dproduct in products)
-                        {
-                            if (dproduct.ProductId == productid)
+                            Console.Write("Enter product id: ");
+                            int productid = Convert.ToInt32(Console.ReadLine());
+                            Product? orderedproduct = null;
+                            foreach (Product dproduct in products)
                             {
-                                orderedproduct = dproduct;
+                                if (dproduct.ProductId == productid)
+                                {
+                                    orderedproduct = dproduct;
+                                }
                             }
-                        }
 
-                        Order order = new(orderid + 1, customer, orderedproduct, orderedproduct.StockQuantity, orderedproduct.Price, true,false);
-                        orderFulfillment.Orders?.Add(order);
-
-                        if (orderedproduct != null)
-                        {
-                            orderFulfillment.Products?.Add(orderedproduct);
-                        }
-                        orderFulfillment.PlaceOrder(customer, orderedproduct,orderedproduct.StockQuantity);
-                        break;
                             
-                    case 2:
-                        foreach (Product pproduct in products)
-                        {
-                            if (pproduct.GetType() == typeof(PhysicalProduct))
-                            {
-                                Console.WriteLine("Product ID: {0}   Product Name: {1}   Price: {2}   In stock: {3}", pproduct.ProductId, pproduct.Name, pproduct.Price, pproduct.StockQuantity);
-                            }
-                        }
-                        Console.Write("Enter product id: ");
-                        int pproductid = Convert.ToInt32(Console.ReadLine());
-                        Product? porderedproduct = null;
-                        foreach (Product pproduct in products)
-                        {
-                            if (pproduct.ProductId == pproductid)
-                            {
-                                porderedproduct = pproduct;
-                            }
-                        }
-                        Order porder = new(orderid + 1, customer, porderedproduct, porderedproduct.StockQuantity, porderedproduct.Price, true, false);
-                        orderFulfillment.Orders?.Add(porder);
 
-                        if (porderedproduct != null)
+                            if (orderedproduct != null)
+                            {
+                                OrderFulfillment.Products?.Add(orderedproduct);
+                                Console.Write("Enter quantity: ");
+                                int quantity= Convert.ToInt32(Console.ReadLine());
+                                try
+                                {
+                                    orderFulfillment.PlaceOrder(customer, orderedproduct, quantity);
+                                }
+                                catch(OrderException ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                               
+                            }
+
+                            break;
+
+                        case 2:
+                            foreach (Product pproduct in products)
+                            {
+                                if (pproduct.GetType() == typeof(PhysicalProduct))
+                                {
+                                    Console.WriteLine("Product ID: {0}     Product Name: {1}     Price: {2}     In stock: {3}", pproduct.ProductId, pproduct.Name, pproduct.Price, pproduct.StockQuantity);
+                                }
+                            }
+                            Console.Write("Enter product id: ");
+                            int pproductid = Convert.ToInt32(Console.ReadLine());
+                            Product? porderedproduct = null;
+                            foreach (Product pproduct in products)
+                            {
+                                if (pproduct.ProductId == pproductid)
+                                {
+                                    porderedproduct = pproduct;
+                                }
+                            }
+                           
+
+                            if (porderedproduct != null)
+                            {
+                                OrderFulfillment.Products?.Add(porderedproduct);
+                                Console.Write("Enter quantity: ");
+                                int quantity = Convert.ToInt32(Console.ReadLine());
+                                try
+                                {
+                                   orderFulfillment.PlaceOrder(customer, porderedproduct, quantity);
+                                }
+                                catch (OrderException ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                            }
+                            break;
+                        case 3:
+                            Console.WriteLine("Proceed to payment");
+                            OrderFulfillment.ShowTotalCost(customer);
+                            Console.Write("Enter amount to pay: ");
+                            double amount = Convert.ToDouble(Console.ReadLine());
+                            try
+                            {
+                                OrderFulfillment.ProcessPayment(customer, amount);
+                            }
+                            catch(OrderException ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                            }
+                            break;
+                        default: break;
+                    }
+                    break;
+                case 2:
+                    if (OrderFulfillment.Orders != null)
+                    {
+                        foreach (Order order in OrderFulfillment.Orders)
                         {
-                            orderFulfillment.Products?.Add(porderedproduct);
+                            if (order.Customer.CustomerName == customer.CustomerName)
+                            {
+                                Console.WriteLine("Order ID: {0}     Product Name: {1}     Paid: {2}", order.OrderId, order.Product.Name, order.IsPaid);
+                            }
                         }
-                        orderFulfillment.PlaceOrder(customer, porderedproduct, porderedproduct.StockQuantity);
-                        break;
-                    default: break;
-                }
-                break;
-            //case 2:
-            //    foreach (Product pproduct in products)
-            //    {
-            //       Console.WriteLine("Product ID: {0}   Product Name: {1}   Price: {2}   In stock: {3}", pproduct.ProductId, pproduct.Name, pproduct.Price, pproduct.StockQuantity);
-            //    }
-                //break;
-            default: break;
-        }
-        break;
-    default:
-        break;
+                    }
+                    break;
+                default: break;
+            }
+            break;
+        default:
+            break;
+    }
+    Console.WriteLine("Enter Y to continue");
+    flag = Console.ReadLine();
 }
-
 

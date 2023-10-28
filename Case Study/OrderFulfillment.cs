@@ -9,9 +9,9 @@ namespace Case_Study
 {
     internal class OrderFulfillment
     {
-        public List<Product>? Products { get; set; }
-        public List<Customer>? Customers { get; set; }
-        public List<Order>? Orders { get; set; }
+        public static List<Product>? Products = new();
+        public static List<Customer>? Customers = new();
+        public static List<Order>? Orders = new();
         public void PlaceOrder(Customer customer, Product product, int quantity)
         {
             if (product.StockQuantity < quantity)
@@ -19,15 +19,30 @@ namespace Case_Study
                 throw new OrderException("Product out of stock");
             }
             double totalamount = product.Price * quantity;
-            var orderid = 1;
+            int orderid=1;
             if (Orders != null)
             {
-                orderid += 1;
+                 orderid = Orders.Count + 1;
             }
             Order order = new(orderid, customer, product, quantity, totalamount, false, false);
             Orders?.Add(order);
             customer.PlacedOrders?.Add(order);
-            Console.WriteLine("Order placed");
+            Console.WriteLine("Added to cart");
+
+
+
+        }
+        public static void ShowTotalCost(Customer customer)
+        {
+            double totalcost = 0.0;
+            if (customer.PlacedOrders != null)
+            {
+                foreach (var order in customer.PlacedOrders)
+                {
+                    totalcost += order.TotalAmount;
+                }
+                Console.WriteLine("Total cost: " + totalcost);
+            }
         }
         public static void ProcessPayment(Customer customer, double amount)
         {
@@ -38,13 +53,14 @@ namespace Case_Study
                 {
                     totalcost += order.TotalAmount;
                 }
-
-                if (amount > 0 && amount <= totalcost)
+                if (amount >= totalcost)
                 {
                     foreach (var order in customer.PlacedOrders)
                     {
                         order.IsPaid = true;
+                        order.Product.StockQuantity -= order.Quantity;
                     }
+                    Console.WriteLine("Payment success");
                 }
                 else
                 {
@@ -55,12 +71,15 @@ namespace Case_Study
         public void DeliverProduct(Customer customer, Product product)
         {
             Order? order = null;
-            foreach (var o in Orders)
+            if (Orders != null)
             {
-                if (o.Customer == customer && o.Product == product)
+                foreach (var o in Orders)
                 {
-                    order = o;
-                    break;
+                    if (o.Customer == customer && o.Product == product)
+                    {
+                        order = o;
+                        break;
+                    }
                 }
             }
             if (order != null && order.IsPaid)

@@ -22,7 +22,7 @@ namespace Case_Study
         public int CustomerId { get ; set ; }
         public string? CustomerName { get; set; }
         public string? ContactDetails { get; set; }
-        public List<Order>? PlacedOrders { get; set; }
+        public List<Order>? PlacedOrders = new();
         public void DisplayCustomerDetails()
         {
             Console.WriteLine("Customer ID: {0}\nCustomer Name: {1}\nCustomer Details: {2}", CustomerId, CustomerName, ContactDetails);
