@@ -8,23 +8,24 @@ namespace Case_Study
 {
     internal class Customer
     {
-        private int custId;
-        private string? custName;
-        private string? contactDetails;
+        //private int customerId;
+        //private string? customerName;
+        //private string? contactDetails;
 
-        public Customer(int custId, string? custName, string? contactDetails)
+        public Customer(int customerId, string? customerName, string? contactDetails)
         {
-            CustId = custId;
-            CustName = custName;
+            CustomerId = customerId;
+            CustomerName = customerName;
             ContactDetails = contactDetails;
         }
 
-        public int CustId { get => custId; set => custId = value; }
-        public string? CustName { get => custName; set => custName = value; }
-        public string? ContactDetails { get => contactDetails; set => contactDetails = value; }
+        public int CustomerId { get ; set ; }
+        public string? CustomerName { get; set; }
+        public string? ContactDetails { get; set; }
+        public List<Order>? PlacedOrders { get; set; }
         public void DisplayCustomerDetails()
         {
-            Console.WriteLine("Customer ID: {0}\nCustomer Name: {1}\nCustomer Details: {2}", custId, custName, contactDetails);
+            Console.WriteLine("Customer ID: {0}\nCustomer Name: {1}\nCustomer Details: {2}", CustomerId, CustomerName, ContactDetails);
         }
 
     }
