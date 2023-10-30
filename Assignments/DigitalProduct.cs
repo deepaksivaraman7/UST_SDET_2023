@@ -6,17 +6,19 @@
 
 //namespace Assignments
 //{
-//    internal class DigitalProduct:ElectronicsProduct
+//    internal class DigitalProduct : ElectronicsProduct
 //    {
-//        public DigitalProduct(string? productName, double price, int quantity, int warrantyPeriod, string? fileFormat) : base(productName, price, quantity, warrantyPeriod)
+//        public DigitalProduct(int productId, string? name, double price, int quantity, int warrantyPeriod,string? fileFormat) : base(productId, name, price, quantity, warrantyPeriod)
 //        {
 //            FileFormat = fileFormat;
 //        }
 
+        
+
 //        public string? FileFormat { get; set; }
 //        public void DisplayFormat()
 //        {
-//            Console.WriteLine("File Format: "+FileFormat);
+//            Console.WriteLine("File Format: " + FileFormat);
 //        }
 //    }
 //}

@@ -9,11 +9,11 @@ namespace Assignments
     internal class Product<T>
     {
         private int productId;
-        private T name;
+        private string? name;
         private double price;
         private int quantity;
 
-        public Product(int productId, T name, double price, int quantity)
+        public Product(int productId, string? name, double price, int quantity)
         {
             ProductId = productId;
             Name = name;
@@ -22,20 +22,20 @@ namespace Assignments
         }
 
         public int ProductId { get => productId; set => productId = value; }
-        public T Name { get => name; set => name = value; }
+        public string? Name { get => name; set => name = value; }
         public double Price { get => price; set => price = value; }
         public int Quantity { get => quantity; set => quantity = value; }
-        public static List<Product<T>> productList=new();
+        public static List<Product<T>> productList = new();
         public static void AddProduct(Product<T> product)
         {
             productList.Add(product);
             Console.WriteLine("Product added");
         }
-        public static void UpdateProduct(int productId,ref T name,double price,int quantity)
+        public static void UpdateProduct(int productId, string name, double price, int quantity)
         {
-            foreach(var item in productList)
+            foreach (var item in productList)
             {
-                if(item.ProductId == productId)
+                if (item.ProductId == productId)
                 {
                     item.Name = name;
                     item.Price = price;
@@ -50,24 +50,22 @@ namespace Assignments
         }
         public static void RemoveProduct(int productId)
         {
-            foreach(var item in productList)
+            foreach (var item in productList)
             {
-                if(item.ProductId == productId)
+                if (item.ProductId == productId)
                 {
                     productList.Remove(item);
                     Console.WriteLine("Removed");
                 }
-            }
-            foreach (var product in productList)
-            {
-                Console.WriteLine("Product ID: {0}   Product Name: {1}   Price: {2}   Quantity: {3}", product.ProductId, product.Name, product.Price, product.Quantity);
+                Console.WriteLine("Product ID: {0}   Product Name: {1}   Price: {2}   Quantity: {3}", item.ProductId, item.Name, item.Price, item.Quantity);
+
             }
         }
         public static void SearchProduct(int productId)
         {
-            foreach(var item in productList)
+            foreach (var item in productList)
             {
-                if(item.productId==productId)
+                if (item.productId == productId)
                 {
                     Console.WriteLine("Product ID: {0}   Product Name: {1}   Price: {2}   Quantity: {3}", item.ProductId, item.Name, item.Price, item.Quantity);
                 }

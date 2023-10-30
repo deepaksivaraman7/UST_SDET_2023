@@ -281,14 +281,12 @@ using Assignments.Exceptions;
 
 //2
 
-var name1 = "Apple";
-var name2 = 2;
-var name3 = 3;
-Product<string> product1 = new(123, name1, 20, 2);
-Product<int> product2 = new(456, name2, 40, 1);
-Product<string>.AddProduct(product1);
-Product<int>.AddProduct(product2);
-Product<int>.UpdateProduct(123, ref name3, 80, 5);
-Product<int>.RemoveProduct(123);
-Product<int>.SearchProduct(123);
+Product<ElectronicsProduct>.AddProduct(new ElectronicsProduct(123, "Apple", 23, 2, 5));
+Product<ClothingProduct>.AddProduct(new ClothingProduct(456, "Lee Cooper", 34, 2, "Medium"));
+
+Product<ElectronicsProduct>.UpdateProduct(123,"Mango",45,6);
+Product<ClothingProduct>.UpdateProduct(456, "Buffalo", 23, 7);
+
+Product<ElectronicsProduct>.RemoveProduct(123);
+Product<ClothingProduct>.SearchProduct(456);
 
