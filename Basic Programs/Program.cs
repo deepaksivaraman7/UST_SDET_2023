@@ -252,3 +252,23 @@ Console.WriteLine(sum);*/
 //FileOperations.CopyMoveFile();
 //FileOperations.DeleteFile();
 //FileOperations.FileProperties();
+
+//30-10-2023
+
+//GenericsExample<int> g1 = new(10, 20);
+//Console.WriteLine(g1.Val1+" "+g1.Val2);
+//GenericsExample<string> g2 = new("string1", "string2");
+//Console.WriteLine(g2.Val1 + " " + g2.Val2);
+//GenericsExample<double> g3 = new(10.02, 20.67);
+//Console.WriteLine(g3.Val1 + " " + g3.Val2);
+
+//GenericsExample<int>ga=new(new int[3]{10,20,30});
+//ga.Display();
+
+//int n1 = 10, n2 = 20;
+//char c1 = 'A', c2 = 'B';
+
+//GenericsExample<int>.Swap(ref n1, ref n2);
+//Console.WriteLine(n1 + " " + n2);
+//GenericsExample<char>.Swap(ref c1, ref c2);
+//Console.WriteLine(c1 + " " + c2);

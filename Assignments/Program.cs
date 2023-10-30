@@ -227,43 +227,68 @@ using Assignments.Exceptions;
 
 //3
 
-string? flag = "Y";
-while (flag == "Y")
-{
-    Console.WriteLine("Select:   1.Add Medical History    2.View Medical History");
-    int choice = Convert.ToInt32(Console.ReadLine());
-    switch (choice)
-    {
-        case 1:
-            Console.Write("Enter Record ID: ");
-            int rid = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter Patient ID: ");
-            int pid = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter description: ");
-            string? desc = Console.ReadLine();
-            Console.Write("Date: ");
-            string? stringdate= Console.ReadLine();
-            DateOnly date = DateOnly.MinValue;
-            if (stringdate != null)
-            {
-               date = DateOnly.Parse(stringdate);
-            }
-            MedicalHistory medicalHistory = new(rid,pid,desc,date);
-            MedicalHistory.AddMedicalHistoryToList(medicalHistory);
-            MedicalHistory.AddMedicalHistory(medicalHistory);
-            break;
-        case 2:
-            Console.Write("Enter Patient ID: ");
-            int patientId= Convert.ToInt32(Console.ReadLine());
-            MedicalHistory.ViewMedicalHistory(patientId);
-            break;
-        default:
-            break;
-    }
-    Console.WriteLine("Press Y to continue, any other key to exit");
-    flag = Console.ReadLine();
-    if (flag != null)
-    {
-        flag = flag.ToUpper();
-    }
-}
+//string? flag = "Y";
+//while (flag == "Y")
+//{
+//    Console.WriteLine("Select:   1.Add Medical History    2.View Medical History");
+//    int choice = Convert.ToInt32(Console.ReadLine());
+//    switch (choice)
+//    {
+//        case 1:
+//            Console.Write("Enter Record ID: ");
+//            int rid = Convert.ToInt32(Console.ReadLine());
+//            Console.Write("Enter Patient ID: ");
+//            int pid = Convert.ToInt32(Console.ReadLine());
+//            Console.Write("Enter description: ");
+//            string? desc = Console.ReadLine();
+//            Console.Write("Date: ");
+//            string? stringdate= Console.ReadLine();
+//            DateOnly date = DateOnly.MinValue;
+//            if (stringdate != null)
+//            {
+//               date = DateOnly.Parse(stringdate);
+//            }
+//            MedicalHistory medicalHistory = new(rid,pid,desc,date);
+//            MedicalHistory.AddMedicalHistoryToList(medicalHistory);
+//            MedicalHistory.AddMedicalHistory(medicalHistory);
+//            break;
+//        case 2:
+//            Console.Write("Enter Patient ID: ");
+//            int patientId= Convert.ToInt32(Console.ReadLine());
+//            MedicalHistory.ViewMedicalHistory(patientId);
+//            break;
+//        default:
+//            break;
+//    }
+//    Console.WriteLine("Press Y to continue, any other key to exit");
+//    flag = Console.ReadLine();
+//    if (flag != null)
+//    {
+//        flag = flag.ToUpper();
+//    }
+//}
+
+//30-10-2023
+
+//1
+
+//var type1 = "Two";
+//var type2 = 3;
+//RoomReservation<string>.BookReservation(123, ref type1);//room type using string
+//RoomReservation<int>.BookReservation(456, ref type2);//room type using int
+
+//RoomReservation<string>.CancelReservation(123);
+
+//2
+
+var name1 = "Apple";
+var name2 = 2;
+var name3 = 3;
+Product<string> product1 = new(123, name1, 20, 2);
+Product<int> product2 = new(456, name2, 40, 1);
+Product<string>.AddProduct(product1);
+Product<int>.AddProduct(product2);
+Product<int>.UpdateProduct(123, ref name3, 80, 5);
+Product<int>.RemoveProduct(123);
+Product<int>.SearchProduct(123);
+
