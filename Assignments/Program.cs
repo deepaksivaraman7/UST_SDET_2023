@@ -281,12 +281,70 @@ using Assignments.Exceptions;
 
 //2
 
-Product<ElectronicsProduct>.AddProduct(new ElectronicsProduct(123, "Apple", 23, 2, 5));
-Product<ClothingProduct>.AddProduct(new ClothingProduct(456, "Lee Cooper", 34, 2, "Medium"));
+//Product<ElectronicsProduct>.AddProduct(new ElectronicsProduct(123, "Apple", 23, 2, 5));
+//Product<ClothingProduct>.AddProduct(new ClothingProduct(456, "Lee Cooper", 34, 2, "Medium"));
 
-Product<ElectronicsProduct>.UpdateProduct(123,"Mango",45,6);
-Product<ClothingProduct>.UpdateProduct(456, "Buffalo", 23, 7);
+//Product<ElectronicsProduct>.UpdateProduct(123,"Mango",45,6);
+//Product<ClothingProduct>.UpdateProduct(456, "Buffalo", 23, 7);
 
-Product<ElectronicsProduct>.RemoveProduct(123);
-Product<ClothingProduct>.SearchProduct(456);
+//Product<ElectronicsProduct>.RemoveProduct(123);
+//Product<ClothingProduct>.SearchProduct(456);
 
+//31-10-2023
+
+//1
+
+//public delegate int BonusCalculation(Employee employee,int performanceRating);//declare
+
+//class Program
+//{
+//    public static void DelegateCall()
+//    {
+//        Console.Write("Enter employee id: ");
+//        int id = Convert.ToInt32(Console.ReadLine());
+//        Console.Write("Enter first name: ");
+//        string? firstName = Console.ReadLine();
+//        Console.Write("Enter last name: ");
+//        string? lastName = Console.ReadLine();
+//        Console.Write("Enter age: ");
+//        int age = Convert.ToInt32(Console.ReadLine());
+//        Console.Write("Enter performance rating: ");
+//        int performanceRating = Convert.ToInt32(Console.ReadLine());
+//        Employee employee = new(id, firstName, lastName, age);
+//        BonusCalculation bonusdelegate = Employee.CalculateBonus; //binding target
+//        Console.WriteLine("Bonus: "+bonusdelegate(employee,performanceRating));//Invoking delegate
+
+//    }
+//    public static void Main(string[] args)
+//    {
+//        DelegateCall();
+
+
+//    }
+//}
+
+//2
+
+public delegate void EventNotification();//declare
+class Program
+{
+    public static void DelegateCall()
+    {
+        
+
+        HotelEvent hotelEvent1 = new("Normal party", DateOnly.Parse("30-10-2023"), "TVM", 4);
+        HotelEvent hotelEvent2 = new("Luxury party", DateOnly.Parse("31-10-2023"), "Kochi", 10);
+
+        HotelEvent.Add(hotelEvent1);
+        HotelEvent.Add(hotelEvent2);
+
+        EventNotification eventNotification1 = HotelEvent.SendNotification; //binding target
+        EventNotification eventNotification2 = HotelEvent.SendStatus; //binding target
+        EventNotification eventNotificationMerged = eventNotification1 + eventNotification2;
+        eventNotificationMerged();//Invoking delegate
+    }
+    public static void Main(string[] args)
+    {
+        DelegateCall();
+    }
+}

@@ -272,3 +272,36 @@ Console.WriteLine(sum);*/
 //Console.WriteLine(n1 + " " + n2);
 //GenericsExample<char>.Swap(ref c1, ref c2);
 //Console.WriteLine(c1 + " " + c2);
+
+//31-10-2023
+
+public delegate void Delegate1(string msg);//declare
+public delegate void Delegate2(int num1,int num2);
+public delegate int Delegate3(int num1, int num2);
+class Program
+{
+    public static void DelegateCall()
+    {
+        Delegate1 delegate1 = DelegateExample.MethodA; //binding target
+        delegate1("Hello");//Invoking delegate
+
+        DelegateExample de = new();
+        Delegate2 delegate2 = de.Add;
+        Delegate2 delegate3 = de.Sub;
+        //delegate2(12, 34);//Single casting
+        //delegate3(34, 22);
+        Delegate2 delegatecombined = delegate3 + delegate2;//multi-casting
+        delegatecombined(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+
+        Delegate3 delegate4 = de.AddR;
+        Console.WriteLine(delegate4(34, 22));
+    }
+    public static void Main(string[] args)
+    {
+        //Delegate1 delegate1 = DelegateExample.MethodA;
+        DelegateCall();
+
+
+    }
+}
+
