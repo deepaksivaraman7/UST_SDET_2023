@@ -325,26 +325,41 @@ using Assignments.Exceptions;
 
 //2
 
-public delegate void EventNotification();//declare
-class Program
-{
-    public static void DelegateCall()
-    {
-        
+//public delegate void EventNotification();//declare
+//class Program
+//{
+//    public static void DelegateCall()
+//    {
 
-        HotelEvent hotelEvent1 = new("Normal party", DateOnly.Parse("30-10-2023"), "TVM", 4);
-        HotelEvent hotelEvent2 = new("Luxury party", DateOnly.Parse("31-10-2023"), "Kochi", 10);
 
-        HotelEvent.Add(hotelEvent1);
-        HotelEvent.Add(hotelEvent2);
+//        HotelEvent hotelEvent1 = new("Normal party", DateOnly.Parse("30-10-2023"), "TVM", 4);
+//        HotelEvent hotelEvent2 = new("Luxury party", DateOnly.Parse("31-10-2023"), "Kochi", 10);
 
-        EventNotification eventNotification1 = HotelEvent.SendNotification; //binding target
-        EventNotification eventNotification2 = HotelEvent.SendStatus; //binding target
-        EventNotification eventNotificationMerged = eventNotification1 + eventNotification2;
-        eventNotificationMerged();//Invoking delegate
-    }
-    public static void Main(string[] args)
-    {
-        DelegateCall();
-    }
-}
+//        HotelEvent.Add(hotelEvent1);
+//        HotelEvent.Add(hotelEvent2);
+
+//        EventNotification eventNotification1 = HotelEvent.SendNotification; //binding target
+//        EventNotification eventNotification2 = HotelEvent.SendStatus; //binding target
+//        EventNotification eventNotificationMerged = eventNotification1 + eventNotification2;
+//        eventNotificationMerged();//Invoking delegate
+//    }
+//    public static void Main(string[] args)
+//    {
+//        DelegateCall();
+//    }
+//}
+
+//01-11-2023
+
+//1
+
+//TourismDestination destination1 = new("Burj", "Dubai", 2);
+//TourismDestination.AddDestination(destination1);
+
+//2
+
+TouristDestination.ViewDestinationsByRating(3);
+Console.WriteLine();
+TouristDestination.SortByPrice();
+Console.WriteLine();
+TouristDestination.Filter("India");
