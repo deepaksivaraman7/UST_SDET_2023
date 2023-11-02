@@ -1,20 +1,20 @@
-﻿//18-10-2023
-using Assignments;
-using Assignments.Exceptions;
+﻿//18 - 10 - 2023
+//using Assignments;
+//using Assignments.Exceptions;
 
-//int[]grades = new int[3];
+//int[] grades = new int[3];
 //Console.WriteLine("Enter Name: ");
 //string? name = Console.ReadLine();
 
 //for (int i = 1; i < 4; i++)
 //{
-//    Console.WriteLine("Enter Grade"+i+": ");
-//    grades[i-1] = Convert.ToInt32(Console.ReadLine());
+//    Console.WriteLine("Enter Grade" + i + ": ");
+//    grades[i - 1] = Convert.ToInt32(Console.ReadLine());
 //}
 //Student student = new(name, grades);
-//Console.WriteLine(name+"'s average: " + student.CalculateAverage());
+//Console.WriteLine(name + "'s average: " + student.CalculateAverage());
 
-//19-10-2023
+//19 - 10 - 2023
 
 //1
 //Product product1 = new("Mango", 20, 5);
@@ -114,7 +114,7 @@ using Assignments.Exceptions;
 //Console.WriteLine("Electric car: " + electricCar.CalculatePremium());
 //Console.WriteLine("Life Insurance: " + lifeInsurance.CalculatePremium());
 
-//26-10-2023
+//26 - 10 - 2023
 
 //1
 
@@ -159,7 +159,7 @@ using Assignments.Exceptions;
 //    Console.WriteLine(ex.Message);
 //}
 
-//27-10-2023
+//27 - 10 - 2023
 
 //1
 //MedicalRecord mr1 = new(13, "", 23, "Fever", 34, 555);
@@ -242,19 +242,19 @@ using Assignments.Exceptions;
 //            Console.Write("Enter description: ");
 //            string? desc = Console.ReadLine();
 //            Console.Write("Date: ");
-//            string? stringdate= Console.ReadLine();
+//            string? stringdate = Console.ReadLine();
 //            DateOnly date = DateOnly.MinValue;
 //            if (stringdate != null)
 //            {
-//               date = DateOnly.Parse(stringdate);
+//                date = DateOnly.Parse(stringdate);
 //            }
-//            MedicalHistory medicalHistory = new(rid,pid,desc,date);
+//            MedicalHistory medicalHistory = new(rid, pid, desc, date);
 //            MedicalHistory.AddMedicalHistoryToList(medicalHistory);
 //            MedicalHistory.AddMedicalHistory(medicalHistory);
 //            break;
 //        case 2:
 //            Console.Write("Enter Patient ID: ");
-//            int patientId= Convert.ToInt32(Console.ReadLine());
+//            int patientId = Convert.ToInt32(Console.ReadLine());
 //            MedicalHistory.ViewMedicalHistory(patientId);
 //            break;
 //        default:
@@ -268,7 +268,7 @@ using Assignments.Exceptions;
 //    }
 //}
 
-//30-10-2023
+//30 - 10 - 2023
 
 //1
 
@@ -284,17 +284,17 @@ using Assignments.Exceptions;
 //Product<ElectronicsProduct>.AddProduct(new ElectronicsProduct(123, "Apple", 23, 2, 5));
 //Product<ClothingProduct>.AddProduct(new ClothingProduct(456, "Lee Cooper", 34, 2, "Medium"));
 
-//Product<ElectronicsProduct>.UpdateProduct(123,"Mango",45,6);
+//Product<ElectronicsProduct>.UpdateProduct(123, "Mango", 45, 6);
 //Product<ClothingProduct>.UpdateProduct(456, "Buffalo", 23, 7);
 
 //Product<ElectronicsProduct>.RemoveProduct(123);
 //Product<ClothingProduct>.SearchProduct(456);
 
-//31-10-2023
+//31 - 10 - 2023
 
 //1
 
-//public delegate int BonusCalculation(Employee employee,int performanceRating);//declare
+//public delegate int BonusCalculation(Employee employee, int performanceRating);//declare
 
 //class Program
 //{
@@ -312,7 +312,7 @@ using Assignments.Exceptions;
 //        int performanceRating = Convert.ToInt32(Console.ReadLine());
 //        Employee employee = new(id, firstName, lastName, age);
 //        BonusCalculation bonusdelegate = Employee.CalculateBonus; //binding target
-//        Console.WriteLine("Bonus: "+bonusdelegate(employee,performanceRating));//Invoking delegate
+//        Console.WriteLine("Bonus: " + bonusdelegate(employee, performanceRating));//Invoking delegate
 
 //    }
 //    public static void Main(string[] args)
@@ -349,7 +349,7 @@ using Assignments.Exceptions;
 //    }
 //}
 
-//01-11-2023
+//01 - 11 - 2023
 
 //1
 
@@ -358,8 +358,64 @@ using Assignments.Exceptions;
 
 //2
 
-TouristDestination.ViewDestinationsByRating(3);
-Console.WriteLine();
-TouristDestination.SortByPrice();
-Console.WriteLine();
-TouristDestination.Filter("India");
+//TouristDestination.ViewDestinationsByRating(3);
+//Console.WriteLine();
+//TouristDestination.SortByPrice();
+//Console.WriteLine();
+//TouristDestination.Filter("India");
+
+//02-11-2023
+
+//1
+/*using Assignments;
+
+List<Hotel> hotels = new()
+{
+    new("Hotel1", 10,"Kerala","India",5),
+    new("Hotel2", 10,"TN","India",5),
+    new("Hotel3", 10,"Goa","India",5),
+    new("Hotel4", 10,"Agra","India",5),
+    new("Hotel5", 10,"Berlin","Germany",5),
+
+};
+foreach (Hotel hotel in hotels) {
+    Console.WriteLine("Available rooms at " + hotel.HotelName + ": " + hotel.AvailableRooms);
+        }
+await BookRoomsAsync(hotels[0], 2);
+await BookRoomsAsync(hotels[1], 3);
+await BookRoomsAsync(hotels[1], 8);
+await BookRoomsAsync(hotels[3], 1);
+await BookRoomsAsync(hotels[1], 3);
+
+foreach (Hotel hotel in hotels)
+{
+    Console.WriteLine("Available rooms at " + hotel.HotelName + ": " + hotel.AvailableRooms);
+}
+static async Task BookRoomsAsync(Hotel hotel, int numberofrooms)
+{
+    await hotel.BookRoomsAsync(numberofrooms);
+};*/
+
+//2
+using Assignments;
+
+List<TourPackage> packages = new()
+{
+    new(123, "Kerala",DateOnly.Parse("02-10-2023"),5000),
+    new(456, "Tamil Nadu",DateOnly.Parse("22-10-2023"),7000),
+    new(789, "Karnataka",DateOnly.Parse("30-10-2023"),2000),
+    new(378, "Goa",DateOnly.Parse("02-11-2023"),1000),
+    new(287, "Delhi",DateOnly.Parse("12-12-2023"),2000),
+};
+
+
+TourPackage.AddTourPackage(packages[0]);
+TourPackage.AddTourPackage(packages[1]);
+TourPackage.AddTourPackage(packages[2]);
+TourPackage.AddTourPackage(packages[3]);
+
+TourPackage.BookPackage(123);
+TourPackage.BookPackage(456);
+TourPackage.BookPackage(378);
+
+Console.ReadLine();
