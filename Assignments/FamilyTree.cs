@@ -27,7 +27,7 @@ namespace Assignments
         }
     }
 
-    public void DisplayFamilyTree(FamilyMember member, string indent = "")
+    public static void DisplayFamilyTree(FamilyMember member, string indent = "")
     {
         if (member != null)
         {

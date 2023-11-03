@@ -442,27 +442,26 @@ using Assignments;
 // Building the family tree
 FamilyMember grandparent1 = new FamilyMember("Grandparent1", 70);
 FamilyMember grandparent2 = new FamilyMember("Grandparent2", 72);
-FamilyMember grandparent3 = new FamilyMember("Grandparent2", 72);
 
-FamilyTree familyTree = new FamilyTree(grandparent1);
+FamilyTree familyTree1 = new FamilyTree(grandparent1);
+FamilyTree familyTree2 = new FamilyTree(grandparent2);
 
 FamilyMember parent1 = new FamilyMember("Parent1", 40);
 FamilyMember parent2 = new FamilyMember("Parent2", 38);
-FamilyMember parent3 = new FamilyMember("Parent3", 32);
 
 FamilyMember child1 = new FamilyMember("Child1", 15);
 FamilyMember child2 = new FamilyMember("Child2", 12);
 FamilyMember child3 = new FamilyMember("Child3", 14);
 
 
-familyTree.AddFamilyMember(grandparent1, parent1);
-familyTree.AddFamilyMember(grandparent1, parent2);
-familyTree.AddFamilyMember(grandparent1, parent3);
+familyTree1.AddFamilyMember(grandparent1, parent1);
+familyTree2.AddFamilyMember(grandparent2, parent2);
 
 
-familyTree.AddFamilyMember(parent1, child1);
-familyTree.AddFamilyMember(parent2, child2);
-familyTree.AddFamilyMember(parent3, child3);
+familyTree1.AddFamilyMember(parent1, child1);
+familyTree2.AddFamilyMember(parent2, child2);
+familyTree2.AddFamilyMember(parent2, child3);
 
 // Displaying the family tree
-familyTree.DisplayFamilyTree(familyTree.Root);
+FamilyTree.DisplayFamilyTree(familyTree1.Root);
+FamilyTree.DisplayFamilyTree(familyTree2.Root);
