@@ -364,58 +364,105 @@
 //Console.WriteLine();
 //TouristDestination.Filter("India");
 
-//02-11-2023
+//02 - 11 - 2023
 
 //1
-/*using Assignments;
 
-List<Hotel> hotels = new()
-{
-    new("Hotel1", 10,"Kerala","India",5),
-    new("Hotel2", 10,"TN","India",5),
-    new("Hotel3", 10,"Goa","India",5),
-    new("Hotel4", 10,"Agra","India",5),
-    new("Hotel5", 10,"Berlin","Germany",5),
+//List<Hotel> hotels = new()
+//{
+//    new("Hotel1", 10,"Kerala","India",5),
+//    new("Hotel2", 10,"TN","India",5),
+//    new("Hotel3", 10,"Goa","India",5),
+//    new("Hotel4", 10,"Agra","India",5),
+//    new("Hotel5", 10,"Berlin","Germany",5),
 
-};
-foreach (Hotel hotel in hotels) {
-    Console.WriteLine("Available rooms at " + hotel.HotelName + ": " + hotel.AvailableRooms);
-        }
-await BookRoomsAsync(hotels[0], 2);
-await BookRoomsAsync(hotels[1], 3);
-await BookRoomsAsync(hotels[1], 8);
-await BookRoomsAsync(hotels[3], 1);
-await BookRoomsAsync(hotels[1], 3);
+//};
+//foreach (Hotel hotel in hotels) {
+//    Console.WriteLine("Available rooms at " + hotel.HotelName + ": " + hotel.AvailableRooms);
+//        }
+//await BookRoomsAsync(hotels[0], 2);
+//await BookRoomsAsync(hotels[1], 3);
+//await BookRoomsAsync(hotels[1], 8);
+//await BookRoomsAsync(hotels[3], 1);
+//await BookRoomsAsync(hotels[1], 3);
 
-foreach (Hotel hotel in hotels)
-{
-    Console.WriteLine("Available rooms at " + hotel.HotelName + ": " + hotel.AvailableRooms);
-}
-static async Task BookRoomsAsync(Hotel hotel, int numberofrooms)
-{
-    await hotel.BookRoomsAsync(numberofrooms);
-};*/
+//foreach (Hotel hotel in hotels)
+//{
+//    Console.WriteLine("Available rooms at " + hotel.HotelName + ": " + hotel.AvailableRooms);
+//}
+//static async Task BookRoomsAsync(Hotel hotel, int numberofrooms)
+//{
+//    await hotel.BookRoomsAsync(numberofrooms);
+//};*/
 
 //2
+//using Assignments;
+
+//List<TourPackage> packages = new()
+//{
+//    new(123, "Kerala",DateOnly.Parse("02-10-2023"),5000),
+//    new(456, "Tamil Nadu",DateOnly.Parse("22-10-2023"),7000),
+//    new(789, "Karnataka",DateOnly.Parse("30-10-2023"),2000),
+//    new(378, "Goa",DateOnly.Parse("02-11-2023"),1000),
+//    new(287, "Delhi",DateOnly.Parse("12-12-2023"),2000),
+//};
+
+
+//TourPackage.AddTourPackage(packages[0]);
+//TourPackage.AddTourPackage(packages[1]);
+//TourPackage.AddTourPackage(packages[2]);
+//TourPackage.AddTourPackage(packages[3]);
+
+//TourPackage.BookPackage(123);
+//TourPackage.BookPackage(456);
+//TourPackage.BookPackage(378);
+
+//Console.ReadLine();
+
+//03-11-2023
+
+//1
+//using Assignments;
+//CustomLinkedList linkedList = new();
+
+//linkedList.AddNode(new(123,"Description1",true));
+//linkedList.AddNode(new(456, "Description2", false));
+//linkedList.AddNode(new(789, "Description3", true));
+
+//linkedList.RemoveNode(123);
+//linkedList.RemoveNode(333); // Trying to remove a non-existent node
+
+//linkedList.DisplayList();
+
+//2
+
 using Assignments;
 
-List<TourPackage> packages = new()
-{
-    new(123, "Kerala",DateOnly.Parse("02-10-2023"),5000),
-    new(456, "Tamil Nadu",DateOnly.Parse("22-10-2023"),7000),
-    new(789, "Karnataka",DateOnly.Parse("30-10-2023"),2000),
-    new(378, "Goa",DateOnly.Parse("02-11-2023"),1000),
-    new(287, "Delhi",DateOnly.Parse("12-12-2023"),2000),
-};
+
+// Building the family tree
+FamilyMember grandparent1 = new FamilyMember("Grandparent1", 70);
+FamilyMember grandparent2 = new FamilyMember("Grandparent2", 72);
+FamilyMember grandparent3 = new FamilyMember("Grandparent2", 72);
+
+FamilyTree familyTree = new FamilyTree(grandparent1);
+
+FamilyMember parent1 = new FamilyMember("Parent1", 40);
+FamilyMember parent2 = new FamilyMember("Parent2", 38);
+FamilyMember parent3 = new FamilyMember("Parent3", 32);
+
+FamilyMember child1 = new FamilyMember("Child1", 15);
+FamilyMember child2 = new FamilyMember("Child2", 12);
+FamilyMember child3 = new FamilyMember("Child3", 14);
 
 
-TourPackage.AddTourPackage(packages[0]);
-TourPackage.AddTourPackage(packages[1]);
-TourPackage.AddTourPackage(packages[2]);
-TourPackage.AddTourPackage(packages[3]);
+familyTree.AddFamilyMember(grandparent1, parent1);
+familyTree.AddFamilyMember(grandparent1, parent2);
+familyTree.AddFamilyMember(grandparent1, parent3);
 
-TourPackage.BookPackage(123);
-TourPackage.BookPackage(456);
-TourPackage.BookPackage(378);
 
-Console.ReadLine();
+familyTree.AddFamilyMember(parent1, child1);
+familyTree.AddFamilyMember(parent2, child2);
+familyTree.AddFamilyMember(parent3, child3);
+
+// Displaying the family tree
+familyTree.DisplayFamilyTree(familyTree.Root);
