@@ -10,34 +10,34 @@ namespace Assignments
     {
         public FamilyMember Root { get; set; }
 
-    public FamilyTree(FamilyMember root)
-    {
+        public FamilyTree(FamilyMember root)
+        {
             Root = root;
         }
 
-    public void AddFamilyMember(FamilyMember parent, FamilyMember child)
-    {
-        if (parent != null)
+        public void AddFamilyMember(FamilyMember parent, FamilyMember child)
         {
-            parent.Children.Add(child);
-        }
-        else
-        {
-            Root = child;
-        }
-    }
-
-    public static void DisplayFamilyTree(FamilyMember member, string indent = "")
-    {
-        if (member != null)
-        {
-            Console.WriteLine($"{indent}{member.Name} (Age: {member.Age})");
-
-            foreach (var child in member.Children)
+            if (parent != null)
             {
-                DisplayFamilyTree(child, indent + "  ");
+                parent.Children.Add(child);
+            }
+            else
+            {
+                Root = child;
             }
         }
-    }
+
+        public static void DisplayFamilyTree(FamilyMember member, string indent = "")
+        {
+            if (member != null)
+            {
+                Console.WriteLine($"{indent}{member.Name} (Age: {member.Age})");
+
+                foreach (var child in member.Children)
+                {
+                    DisplayFamilyTree(child, indent + "  ");
+                }
+            }
+        }
     }
 }
