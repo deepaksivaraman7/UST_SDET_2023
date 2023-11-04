@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Case_Study
 {
+
     internal class Course:IEnrollable
     {
         public Course(int courseCode, string title, string instructor)
@@ -31,5 +33,6 @@ namespace Case_Study
             EnrollmentRecord record = new(student, this);
             EnrollmentRecord.Withdraw(record);
         }
+        
     }
 }

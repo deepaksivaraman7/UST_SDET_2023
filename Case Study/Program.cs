@@ -353,7 +353,7 @@ namespace Case_Study
     public delegate void EnrollmentHandler(Student student);
     class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             while (true)
             {
@@ -418,12 +418,7 @@ namespace Case_Study
                                     try
                                     {
                                         EnrollmentRecord.DisplayCourses();
-                                        Console.Write("Enter course id to register: ");
-                                        int registercourseid = Convert.ToInt32(Console.ReadLine());
-                                        Course registercourse = EnrollmentRecord.Courses.FirstOrDefault(c => c.CourseCode == registercourseid);
-
-                                        EnrollmentHandler enrollmentHandlerRegister= registercourse.RegisterForCourse;
-                                        enrollmentHandlerRegister.Invoke(student);
+                                       await EnrollmentAsync(student);
                                         Console.WriteLine("Enter Y to continue, any other key to go back to login.");
                                         studentchoice = Console.ReadLine().ToUpper();
                                     }
@@ -436,18 +431,7 @@ namespace Case_Study
                                     try
                                     {
                                         EnrollmentRecord.DisplayRegisteredCourses(student);
-                                        Console.Write("Enter course id to withdraw: ");
-                                        int deregistercourseid = Convert.ToInt32(Console.ReadLine());
-                                        Course deregistercourse = EnrollmentRecord.Courses.FirstOrDefault(c => c.CourseCode == deregistercourseid);
-                                        if(deregistercourse != null)
-                                        {
-                                            EnrollmentHandler enrollmentHandlerWithdraw = deregistercourse.WithdrawFromCourse;
-                                            enrollmentHandlerWithdraw.Invoke(student);
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine("No courses match the id");
-                                        }
+                                       await WithdrawAsync(student);
                                         Console.WriteLine("Enter Y to continue, any other key to go back to login.");
                                         studentchoice = Console.ReadLine().ToUpper();
                                     }
@@ -463,6 +447,33 @@ namespace Case_Study
                         break;
                     default: break;
                 }
+            }
+        }
+        public static async Task EnrollmentAsync(Student student)
+        {
+            Console.Write("Enter course id to register: ");
+            int registercourseid = Convert.ToInt32(Console.ReadLine());
+            await Task.Delay(1000);
+
+            Course registercourse = EnrollmentRecord.Courses.FirstOrDefault(c => c.CourseCode == registercourseid);
+
+            EnrollmentHandler enrollmentHandlerRegister = registercourse.RegisterForCourse;
+            enrollmentHandlerRegister.Invoke(student);
+        }
+        public static async Task WithdrawAsync(Student student)
+        {
+            Console.Write("Enter course id to withdraw: ");
+            int deregistercourseid = Convert.ToInt32(Console.ReadLine());
+            await Task.Delay(1000);
+            Course deregistercourse = EnrollmentRecord.Courses.FirstOrDefault(c => c.CourseCode == deregistercourseid);
+            if (deregistercourse != null)
+            {
+                EnrollmentHandler enrollmentHandlerWithdraw = deregistercourse.WithdrawFromCourse;
+                enrollmentHandlerWithdraw.Invoke(student);
+            }
+            else
+            {
+                Console.WriteLine("No courses match the id");
             }
         }
     }

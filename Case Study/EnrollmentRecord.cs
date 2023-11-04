@@ -69,16 +69,23 @@ namespace Case_Study
         }
         public static void Enroll(EnrollmentRecord record)
         {
-            
-            EnrollmentRecords.Add(record);
-            Console.WriteLine("Enrolled");
+            var searchrecord=EnrollmentRecords.FirstOrDefault(r=>r.Student.StudentID==record.Student.StudentID&&r.Course.CourseCode==record.Course.CourseCode);
+            if (searchrecord == null)
+            {
+                EnrollmentRecords.Add(record);
+                Console.WriteLine("Enrolled");
+            }
+            else
+            {
+                throw new EnrollmentException("Already enrolled in the course");
+            }
         }
         public static void Withdraw(EnrollmentRecord record)
         {
             EnrollmentRecord withdrawrecord = EnrollmentRecords.FirstOrDefault(r => r.Student.StudentID == record.Student.StudentID && r.Course.CourseCode == record.Course.CourseCode);
             if (withdrawrecord != null)
             {
-                EnrollmentRecords.Remove(record);
+                EnrollmentRecords.Remove(withdrawrecord);
                 Console.WriteLine("Withdrawn");
             }
             else
